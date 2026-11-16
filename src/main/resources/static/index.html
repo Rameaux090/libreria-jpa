@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Librería</title>
+    <style>
+        body {
+            font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            max-width: 720px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            color: #1f2933;
+            line-height: 1.6;
+        }
+        h1 { color: #2563eb; margin-bottom: 0.25rem; }
+        code {
+            background: #f1f5f9;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+        th, td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+        th { background: #f8fafc; }
+        a.button {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.1rem;
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        a.button:hover { background: #1d4ed8; }
+        .muted { color: #64748b; }
+    </style>
+</head>
+<body>
+    <h1>API REST de Libros</h1>
+    <p class="muted">Servidor Spring Boot funcionando correctamente. Esta no es la API:
+       es solo una página informativa en la raíz.</p>
+
+    <h2>Endpoints disponibles</h2>
+    <p>Base URL: <code>http://localhost:8099/api/libros</code></p>
+
+    <table>
+        <thead>
+            <tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>GET</td><td><code>/api/libros</code></td><td>Lista todos los libros.</td></tr>
+            <tr><td>GET</td><td><code>/api/libros?titulo=quijote</code></td><td>Filtra por título (parcial).</td></tr>
+            <tr><td>GET</td><td><code>/api/libros/{id}</code></td><td>Devuelve un libro por id.</td></tr>
+            <tr><td>POST</td><td><code>/api/libros</code></td><td>Crea un libro (JSON en el cuerpo).</td></tr>
+            <tr><td>DELETE</td><td><code>/api/libros/{id}</code></td><td>Elimina un libro por id.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Documentación interactiva</h2>
+    <p>Puedes probar la API desde Swagger UI:</p>
+    <a class="button" href="/swagger-ui.html">Abrir Swagger UI</a>
+
+    <h2>Base de datos H2</h2>
+    <p>La aplicación usa una base de datos H2 en memoria. Puedes inspeccionarla
+       con la consola web integrada:</p>
+    <a class="button" href="/h2-console">Abrir consola H2</a>
+    <p class="muted">Datos de conexión: JDBC URL <code>jdbc:h2:mem:libreriadb</code>,
+       usuario <code>sa</code>, contraseña vacía.</p>
+
+    <h2>Ejemplo de uso</h2>
+    <pre><code>curl http://localhost:8099/api/libros</code></pre>
+    <pre><code>curl -X POST http://localhost:8099/api/libros \
+  -H "Content-Type: application/json" \
+  -d '{"autor":"Antoine de Saint-Exupéry","titulo":"El Principito","fechaPublicacion":"1943-04-06"}'</code></pre>
+</body>
+</html>
